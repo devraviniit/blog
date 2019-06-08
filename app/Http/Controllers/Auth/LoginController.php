@@ -66,7 +66,7 @@ class LoginController extends Controller
                 'password' => 'required|string',
             ],
             [
-                'identity.required' => 'Username or email is required',
+                'email.required' => 'Email is required',
                 'password.required' => 'Password is required',
             ]
         );
