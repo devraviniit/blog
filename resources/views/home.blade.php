@@ -41,13 +41,15 @@
                 <td>{{$posts->title}}</td>
                 <td>{{$posts->description}}</td>
                 <td>
+				@if((Auth::user()->id == $posts->author) || (Auth::user()->id == 1))
 				<a href="{{ route('post.edit', $posts->id) }}">Edit</a>
-				
+				 
 				<form method="post" action="{{ route('post.delete') }}">
                         {{ csrf_field() }}
 						<input type='hidden' name="deletedId" value="{{$posts->id}}">
 				<input type="submit" value="Delete"></td>
 						</form>
+						@endif
             </tr>
 			@endforeach   
         </tbody>

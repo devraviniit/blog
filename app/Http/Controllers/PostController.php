@@ -12,7 +12,7 @@ class PostController extends Controller
 		//$posts = Posts::all();
 		$posts =DB::table('posts')
                 ->join('users', 'users.id', '=', 'posts.author')
-                ->select('posts.*','users.name')
+                ->select('posts.*','users.name')->orderBy('posts.id','desc')
                 ->get();
 				$obj = (object) $posts;
 		return view('post.index')->with('posts',$obj);

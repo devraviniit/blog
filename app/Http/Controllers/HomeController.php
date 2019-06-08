@@ -26,11 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-		if(Auth::user()->isAdmin == 1){
+		$posts = Posts::all();
+		/* if(Auth::user()->isAdmin == 1){
 			$posts = Posts::all();
 		}else{
 			$posts = Posts::where('author' , Auth::user()->id)->get();
-		}
+		} */
 		$obj = (object) $posts;
         return view('home')->with('posts',$obj);
     }
