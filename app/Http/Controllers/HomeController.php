@@ -31,7 +31,8 @@ class HomeController extends Controller
 		}else{
 			$posts = Posts::where('author' , Auth::user()->id)->get();
 		}
-        return view('home')->with('posts',$posts);
+		$obj = (object) $posts;
+        return view('home')->with('posts',$obj);
     }
 
     public function getPostForm() {
@@ -52,7 +53,8 @@ class HomeController extends Controller
 	public function editPost($id)
     {
         $post = Posts::where('id', $id)->first();
-		return view('post/edit_form')->with('post',$post);
+		$obj = (object) $post;
+		return view('post/edit_form')->with('post',$obj);
     }
 	
 	public function updatePost(Request $request){

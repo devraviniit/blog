@@ -14,11 +14,13 @@ class PostController extends Controller
                 ->join('users', 'users.id', '=', 'posts.author')
                 ->select('posts.*','users.name')
                 ->get();
-		return view('post.index')->with('posts',$posts);
+				$obj = (object) $posts;
+		return view('post.index')->with('posts',$obj);
     }
 		
 	public function showPost($id){
 		$post = Posts::find($id);
-		return view('post/show_form')->with('post',$post);
+		$obj = (object) $post;
+		return view('post/show_form')->with('post',$obj);
 	}
 }
